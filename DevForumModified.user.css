@@ -1,0 +1,383 @@
+/* ==UserStyle==
+@name           DevForum Modified
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A list of modifiers to make the experience best to your preferences
+@author         ThatOneUnoriginal
+@license        MIT License
+@preprocessor   stylus
+
+@var select TopActBut "↔️ Topic Actions Alignment" ["Default", "Right", "Left"]
+@var number FontSize "🔠 Font Size" [15, 0, 30, 1, 'px']
+@var text HeadFontType "🔠 Heading Font Type" Arial
+@var text FontType "🔠 Font Typea" Arial
+@var checkbox Avatars "🧑 Show Avatar Icons" 1
+@var checkbox WidePosts "↔️ Wide Posts" 0
+@var checkbox Video "↔️ Resize Videos" 0
+@var checkbox PostEdits "✏️ Show Post Edits Icon" 1
+@var checkbox Blur "👁️ Spoiler Blur" 1
+@var number Menu "↔️ Menu Width" [320, 320, 600, 10, 'px']
+@var select FooterType "❌ Footer" ["Default", "RemoveRecommended", "RemoveExternalLinks", "RemoveBoth"]
+@var checkbox RemoveSlider "❌ Topic Slider" 0
+@var select CategoryInfo "❌ Category Information" ["Default", "RemoveDescriptions", "RemoveSubcatecorgyListings", "RemoveBoth"]
+@var select CategoryTopicInfo "❌ Category Topic Information" ["Default", "RemoveLatest", "RemoveTopics", "RemoveBoth"]
+@var select TopicInformation "❌ Topic Information" ["Default", "RemoveOriginalFrequentPosters", "RemoveRepliesViewsAndActivity", "RemoveBoth"]
+@var select TopicTagInformation "❌ Topic Tags" ["Default", "RemoveNonSubcategoryTags", "RemoveCategoryTags", "RemoveBoth"]
+@var number ThemeType "🎨 [BETA] Theme Type" 0
+==/UserStyle== */
+@-moz-document url-prefix("https://devforum.roblox.com/") {
+    nav.post-controls .actions{
+        if TopActBut=="Left"{
+            margin-left: unset;
+        }
+        if TopActBut=="Right"{
+            margin-left: unset;
+        }
+    }
+
+    nav.post-controls{
+        if TopActBut=="Left"{
+            justify-content: left; 
+        }
+        if TopActBut=="Right"{
+            justify-content: right;
+        }
+    }
+    
+   nav.post-controls .show-replies{
+       if TopActBut"Right"{
+           margin-left: unset;
+       }
+   } 
+    body {
+    font-size: FontSize !important;
+    }  
+    :root{
+        --heading-font-family: HeadFontType;
+        --font-family: FontType;
+    }
+    if Avatars=="0"{
+     div.topic-avatar{
+           display: none;
+       }
+
+    div > div.topic-body.clearfix > div.regular.contents > div > aside > div > img{
+        display: none;
+    }
+    div > div.topic-body.clearfix > div.topic-map > section > ul > li.created-at > div > a > img
+    {
+        display: none;
+    }
+    div > div.topic-body.clearfix > div.topic-map > section > ul > li.last-reply > a > div > a > img{
+        display: none;
+    }
+    div > div.topic-body.clearfix > div.topic-map > section > ul > li.avatars{
+        display: none;
+    }
+    div > div.topic-body.clearfix > div.topic-map > section.topic-map-expanded{
+        display: none
+    }
+    div > div.topic-body.clearfix > div.topic-map > section.map > nav{
+        display: none;
+    }
+   div > div.topic-body.clearfix > div.topic-meta-data > div.post-infos > a > img{
+        display: none;
+   }
+   .topic-list .topic-list-data.posters{display: none;}
+    div > div.topic-body.clearfix > div.regular.contents > section.post-menu-area.clearfix > div{
+    display: none;
+        }
+    .presence-users .presence-avatars{
+        display: none;
+    }
+    div > span > span.description:before{content: "User(s) are"}
+        .trigger-user-card{
+            display: none;
+        }
+    aside.quote .title .avatar{
+        display: none;
+    }
+    }
+    if WidePosts{
+        :root {
+    --topic-body-width: 500000px;
+    --d-max-width: 5110px; 
+        }
+if Video{
+.ytp-thumbnail-image{
+    width: 480px;
+    height: 360px;
+}
+.ytp-large-play-button{
+    top: 25% !important;
+    left: 50% !important;
+    margin: 0;
+}
+.lazyYT-container{
+    padding: 0;
+    max-width: 480px;
+    background: #0000;
+    height: 1em;
+    padding-bottom: 25% !important;
+}
+}
+    }
+    if PostEdits=="0"{
+        div > div.topic-body.clearfix > div.topic-meta-data > div.post-infos > div.post-info.edits{
+            display: none;
+        }
+    }
+    if Blur=="0"{
+        .spoiler-blurred{
+            filter:blur(0.0em);
+        }
+    }
+    header > div > div > div.panel.clearfix > div > div{
+        width: Menu !important;
+    }
+if FooterType=="RemoveRecommended"{
+    #suggested-topics{display:none;}
+    }
+if FooterType=="RemoveExternalLinks"{
+    #footer_rbx > div{display:none;}
+    }
+if FooterType=="RemoveBoth"{
+    #footer_rbx > div{display:none;}
+    #suggested-topics{display:none;}
+
+    }
+if RemoveSlider{
+    .timeline-container{display:none;}
+    #topic-progress{display:none;}
+
+    }
+if CategoryInfo=="RemoveDescriptions"{
+    .categories-list .category h3, .categories-list .category h4{
+        margin-bottom: 0.1em;
+    }
+    
+    div.category-description{
+       display: none;
+    }
+}
+if CategoryInfo=="RemoveSubcatecorgyListings"{
+    div.subcategories{
+        display:none;
+            }
+        }
+if CategoryInfo=="RemoveBoth"{
+    div.category-description{
+       display: none;
+    }
+    div.subcategories{
+        display:none;
+        }
+    }
+if CategoryTopicInfo=="RemoveLatest"{
+    td.latest{
+        display:none;
+    }
+    th.latest{
+        display: none;
+    }
+}
+if CategoryTopicInfo=="RemoveTopics"{
+    td.topics{
+        display: none;
+    }
+    th.topics{
+        display: none;
+    }
+}    
+if CategoryTopicInfo=="RemoveBoth"{
+    td.topics{
+        display: none;
+    }
+    td.latest{
+        display:none;
+    }
+    th.latest{
+        display: none;
+    }
+    th.topics{
+        display: none;
+    }
+}
+if CategoryTopicInfo=="RemoveLatest"{
+    td.latest{
+        display:none;
+    }
+    th.latest{
+        display: none;
+    }
+}
+if CategoryTopicInfo=="RemoveTopics"{
+    td.topics{
+        display: none;
+    }
+    th.topics{
+        display: none;
+    }
+}
+if CategoryTopicInfo=="RemoveBoth"{
+    td.topics{
+        display: none;
+    }
+    td.latest{
+        display:none;
+    }
+    th.latest{
+        display: none;
+    }
+    th.topics{
+        display: none;
+    }
+}
+if TopicInformation=="RemoveOriginalFrequentPosters"{
+    .topic-list .topic-list-data.posters{display: none;}
+    }
+if TopicInformation=="RemoveRepliesViewsAndActivity"{
+    td.num.topic-list-data.age.activity{
+      display:none;  
+    }
+td.num.views.heatmap-high.topic-list-data{
+    display: none;
+}
+td.num.posts-map.posts.heatmap-high.topic-list-data{
+    display: none;
+}
+td.num.views.heatmap-med.topic-list-data{
+    display: none;
+}
+td.num.posts-map.posts.topic-list-data{
+    display: none;
+}
+th.posts.sortable.num.topic-list-data{
+    display: none;
+}
+th.views.sortable.num.topic-list-data{
+    display: none;
+}
+th.activity.sortable.num.topic-list-data{
+    display: none;
+}
+td.num.views.topic-list-data{
+    display:none;
+}
+}
+if TopicInformation=="RemoveBoth"{
+td.num.topic-list-data.age.activity{
+      display:none;  
+    }
+td.num.views.heatmap-high.topic-list-data{
+    display: none;
+}
+td.num.posts-map.posts.heatmap-high.topic-list-data{
+    display: none;
+}
+td.num.views.heatmap-med.topic-list-data{
+    display: none;
+}
+td.num.posts-map.posts.topic-list-data{
+    display: none;
+}
+th.posts.sortable.num.topic-list-data{
+    display: none;
+}
+th.views.sortable.num.topic-list-data{
+    display: none;
+}
+th.activity.sortable.num.topic-list-data{
+    display: none;
+}
+td.num.views.topic-list-data{
+    display:none;
+}
+.topic-list .topic-list-data.posters{display: none;}
+    }
+    
+if TopicTagInformation=="RemoveNonSubcategoryTags"{
+td.main-link.clearfix.topic-list-data > div > div{
+        display:none;
+    }
+}
+if TopicTagInformation=="RemoveCategoryTags"{
+td.main-link.clearfix.topic-list-data > div > a{
+        display:none;
+    }
+}
+if TopicTagInformation=="RemoveBoth"{
+td.main-link.clearfix.topic-list-data > div > div{
+        display:none;
+    }
+td.main-link.clearfix.topic-list-data > div > a{
+        display:none;
+    }
+}
+
+if CategoryInfo=="RemoveBoth"{
+    if CategoryTopicInfo=="RemoveBoth"{
+     .categories-list .category h3, .categories-list .category h4{
+         margin-bottom: 0.15em;}
+}
+}
+}
+@-moz-document url-prefix("https://devforum.roblox.com/") {
+if ThemeType=="1"{
+    body{
+        background: #171717 !important;
+    }
+    .d-header{
+        border-bottom: 1px solid #565656;
+        background: #171717;
+    }
+    .menu-panel{
+        border: 0px;
+        background: #222222;
+    }
+    .user-menu .quick-access-panel .read{
+        background: #222222;
+    }
+    .menu-panel .widget-link:hover{
+        background: rgb(59, 59, 59);
+    }
+    .menu-panel .widget-link:focus{
+        background: #243946;
+    }
+    .menu-panel .widget-link, .menu-panel .categories-link{
+        color: #fff;
+    }
+    .menu-panel.slide-in{
+        border-right: 1px solid #565656;
+        height: 1000px !important;
+
+    }
+    .user-menu .quick-access-panel{
+        max-height: 1000px;
+    }
+    .btn-flat .d-icon{
+        color: #fff;
+    }
+    .alert.alert-info.clickable{
+        background: #002E49;
+        color: rgb(128, 208, 255);
+    }
+    .nav-pills>li>a:hover, .nav-pills>li button:hover{
+        background-color: #002E49;
+        color: rgb(128, 208, 255);        
+    }
+    .nav-pills>li a.active, .nav-pills>li button.active{
+        color: var(--secondary);
+        background-color: var(--quaternary);
+    }
+    div.menu-links-header .menu-links-row button.active{
+        border-bottom: 0px;
+    }
+    aside.quote .title{
+        background: #2C2C2C;
+    }
+    blockquote{
+        background: #2C2C2C;        
+    }
+}
+}

@@ -1,0 +1,509 @@
+/* ==UserStyle==
+@name           DevForum Modified Mobile
+@namespace      github.com/openstyles/stylus
+@version        1.0.4
+@description    DevForum Modified Designed Specifically For Mobile View
+@author         Me
+@preprocessor   stylus
+
+@var text HeadFontType "🔠 Heading Font Type" Arial
+@var text FontType "🔠 Font Typea" Arial
+@var select TopActBut "↔️ Topic Actions Alignment" ["Default", "Right", "Left"]
+@var checkbox Avatars "🧑 Show Avatar Icons" 1
+@var checkbox PostEdits "✏️ Show Post Edits Icon" 1
+@var number FontSize "🔠 Font Size" [15, 0, 30, 1, 'px']
+@var select FooterType "❌ Footer" ["Default", "RemoveRecommended", "RemoveExternalLinks", "RemoveBoth"]
+@var checkbox RemoveSlider "❌ Topic Slider" 0
+@var checkbox RemoveSpace "❌ Remove Above Footer Spacing" 0
+@var checkbox RemoveSapces "❌ Remove Spacing (Condensed Theme)" 0
+@var checkbox CategorySubCat "❌ Remove Subcategory Listings" 0
+@var checkbox RemoveTopicsCat "❌ Remove Category Topic Stats" 0
+==/UserStyle== */
+
+@-moz-document domain("devforum.roblox.com") {
+if Avatars=="0"{    
+        td > div.pull-left{
+            display:none;
+        }
+        .topic-list .right{
+            margin-left: 0px;
+        }
+        div > div.topic-avatar{
+            display:none;
+        }
+        .topic-meta-data{
+            margin-left: 0px;
+        }
+        div > div.topic-body.clearfix > div.topic-meta-data > div.post-infos > a > img{
+            display: none;
+        }
+       div > div.topic-body.clearfix > div.regular.contents > section > div{
+           display: none;
+       }
+       div > div.topic-body.clearfix > div.topic-meta-data > div.post-infos > div.post-info.edits{
+           display: none;
+       }
+       div > div.topic-body.clearfix > div.topic-map > section > ul > li.created-at > div > a > img{
+           display: none;
+       }
+       div > div.topic-body.clearfix > div.topic-map > section > ul > li.last-reply > a > div > a > img{
+           display: none;
+       }
+       div > div.topic-body.clearfix > div.topic-map > section.topic-map-expanded > section.avatars.clearfix{
+           display: none;
+       }
+       div > div.topic-body.clearfix > div.regular.contents > section > nav > div > div > button.widget-button.btn-flat.button-count.like-count.highlight-action.regular-likes.btn-text:active{
+           background-image: linear-gradient(to bottom, var(--primary-low-mid-low) 0%, var(--primary-low-mid-low) 100%)
+       }
+              div > div.topic-body.clearfix > div.regular.contents > section > nav > div > div > button.widget-button.btn-flat.button-count.like-count.highlight-action.regular-likes.btn-text:focus{
+           background-color: var(--primary-low-mid-low)
+           color: var(--primary-low-mid-or-secondary-high)
+       }
+              div > div.topic-body.clearfix > div.regular.contents > section > nav > div > div > button.widget-button.btn-flat.button-count.like-count.highlight-action.regular-likes.btn-text:hover{
+           background-color: var(--primary-low-mid-low)
+           color: var(--primary-low-mid-or-secondary-high)
+       }
+div > div.topic-body.clearfix > div.regular.contents > div > aside > div > img{
+    display: none;
+}
+div.MuiAvatar-root.MuiAvatar-circular.jss54.MuiAvatar-colorDefault.jss57{
+    display: none;
+}
+    }
+    body {
+    font-size: FontSize !important;
+    }  
+    :root{
+        --heading-font-family: HeadFontType;
+        --font-family: FontType;
+    }
+    
+.jss11{
+    font-size: FontSize;
+    font-family: FontType;
+}
+.jss5{
+    font-size: FontSize + 15px;
+    font-family: FontType;    
+}
+.jss6{
+    font-size: FontSize + 15px;
+    font-family: FontType;     
+}
+.jss12{
+    font-size: FontSize;
+    font-weight: 600;
+    font-family: FontType;   
+}
+    
+nav.post-controls .actions{
+        if TopActBut=="Left"{
+            margin-left: unset;
+        }
+        if TopActBut=="Right"{
+            margin-left: unset;
+        }
+    }
+
+    nav.post-controls{
+        if TopActBut=="Left"{
+            justify-content: left; 
+        }
+        if TopActBut=="Right"{
+            justify-content: right;
+        }
+    }
+    
+nav.post-controls .show-replies{
+    if TopActBut"Right"{
+        margin-left: unset;
+        }
+    }
+if PostEdits=="0"{
+        div > div.topic-body.clearfix > div.topic-meta-data > div.post-infos > div.post-info.edits{
+            display: none;
+        }
+    }
+
+if FooterType=="RemoveRecommended"{
+        #suggested-topics{display:none;}
+    }
+if FooterType=="RemoveExternalLinks"{
+        #footer_rbx > div{display:none;}
+    }
+if FooterType=="RemoveBoth"{
+        #footer_rbx > div{display:none;}
+        #suggested-topics{display:none;}
+    }
+if RemoveSlider{
+    .timeline-container{display:none;}
+        #topic-progress{display:none;}
+    }
+if RemoveSpace{
+    .topic-above-footer-buttons-outlet.presence{
+        min-height: 0em;
+        }
+    }
+if RemoveSapces{
+    .topic-list .topic-list-data{
+        padding: 0px 0;
+    }
+    .topic-list .topic-item-stats{
+        margin-top: 0;
+    }
+    .alert.alert-info.clickable{
+        padding: 0.3em;
+    }
+    .navigation-container{
+        --nav-space: 0.3em;
+    }
+    .categories-list .category-list td:first-of-type{
+        padding-left: 5px;
+    }
+    .categories-list .category-list td{
+        padding: 2px 0px;
+    }
+    .category-list-item{
+        padding: 0em 0em;
+        margin: 0em 0em;
+    }
+    .categories-list .category-list th{
+        padding: 0 0 0;
+    }
+    .category-list-item>footer, .subcategory-list-item>footer{
+        padding: 2px 5px
+    }
+    .list-controls .nav-pills .drop{
+        padding: 0 5px 5px 5px;
+    }
+    .list-controls .nav-pills .drop li{
+        padding-top: 0px
+    }
+    .menu-panel .widget-link, .menu-panel .categories-link{
+        padding: 0;
+    }
+    .menu-panel li.category-link{
+        padding: 0;
+    }
+    div.menu-links-header .menu-links-row .glyphs button{
+        padding: 4px;
+    }
+    .menu-panel .panel-body-bottom{
+        margin-top: 0em;
+    }
+    .user-menu .quick-access-panel{
+        padding-top: 0.2em;
+    }
+    #quick-access-profile > ul > li.summary.read > a{
+        padding: 0.1em;
+        margin: 0.3em;
+    }
+    #quick-access-profile > ul > li.activity.read > a{
+        padding: 0.1em;
+        margin: 0.3em;        
+    }
+    #quick-access-profile > ul > li.drafts.read > a{
+        padding: 0.1em;
+        margin: 0.3em;        
+    }
+    #quick-access-profile > ul > li.preferences.read > a{
+        padding: 0.1em;
+        margin: 0.3em;        
+    }
+    #quick-access-profile > ul > li.do-not-disturb > button{
+        padding: 0.1em;
+        margin: 0.3em;        
+    }
+    #quick-access-profile > ul > li.logout.read > button{
+        padding: 0.1em;
+        margin: 0.3em;        
+    }
+    #quick-access-bookmarks > ul > div > div > div > p{
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+    #quick-access-bookmarks > ul > div > div{
+        padding: 0;
+    }
+    #ember463 > section > div > div > div.primary-textual > div.user-profile-names > h1{
+        margin-bottom: 0em;
+    }
+    #ember463 > section > div > div > div.primary-textual > div.user-profile-names > h2{
+        margin-bottom: 0em;    
+    }
+    .user-main .about .controls .btn{
+        margin-bottom: 4px;
+    }
+    .user-main .collapsed-info.about .details{
+        margin-bottom: 4px;
+    }
+    .user-main .about .details{
+        border-bottom: 0px
+    }
+    .user-content-wrapper{
+        grid-gap: 4px
+    }
+    .empty-state{
+        padding: 0;
+    }
+    div > div > div > p{
+        margin: 0;
+    }
+    .wrap{
+        padding: 0;
+    }
+    .d-header{
+        height: 3em !important;
+    }
+    #main-outlet{
+        padding-top: 1.4em;
+    }
+    .categories-list .category-list{
+        margin-bottom: 0.5
+    }
+    .muted-categories-link{
+        padding: 0.3em;
+    }
+    #list-area{
+        margin-bottom: 0;
+    }
+    .jss3{
+        padding: 6px 4px 6px 0;
+    }
+    .MuiGrid-spacing-xs-1 > .MuiGrid-item{
+        padding: 0 5px 0 5px;
+    }
+    #footer_rbx > div > div:nth-child(2){
+        padding: 0px 5px;
+    }
+    #footer_rbx > div > div:nth-child(3){
+        padding: 0px 5px;
+    }
+    #footer_rbx > div > div:nth-child(4){
+        padding: 0px 5px;
+    }
+    #topic-title{
+        padding: 0;
+    }
+    .post-links-container .post-links{
+        margin-top: 0;
+        padding-top: 0.4em;
+    }
+    .post-links-container ul li{
+        margin-bottom: 0.25em;
+    }
+    .topic-map{
+        margin: 5px 0;
+    }
+    .post-links-container .post-links li:last-of-type{
+        margin-bottom: 0em;
+    }
+    .topic-map .map li{
+        padding: 4px;
+    }
+    .small-action .small-action-desc{
+        padding: 0
+    }
+    .topic-post article{
+        padding: 0;
+    }
+    .boxed .contents{
+        padding: 0;
+    }
+    .cooked table thead th, .d-editor-preview table thead th{
+        padding: 0;
+    }
+    .md-table{
+        margin: 0;
+    }
+    .cooked table td, .d-editor-preview table td{
+        padding: 0;
+        padding-right: 0.2em;
+    }
+    .cooked h1, .cooked h2, .cooked h3, .cooked h4, .cooked h5, .cooked h6, .d-editor-preview h1, .d-editor-preview h2, .d-editor-preview h3, .d-editor-preview h4, .d-editor-preview h5, .d-editor-preview h6{
+        margin: 5px 0 5px;
+    }
+    #topic-footer-buttons{
+        margin: 0;
+    }
+    [class*="archetype-"]{
+       --below-topic-margin: 0.5em; 
+    }
+    #topic-footer-buttons .pinned-button, #topic-footer-buttons .topic-notifications-button{
+        margin: 0.3em;
+    }
+section > div.details > div.primary > div.primary-textual > div.user-profile-names > h1{
+        margin: 0;
+    }
+section > div.details > div.primary > div.primary-textual > div.user-profile-names > h2{
+        margin: 0;
+    }
+section > div.details > div.primary > div.primary-textual > div.user-profile-names > h3{
+        margin: 0;
+    }
+    .user-main .about .secondary dl{
+        padding: 0;
+    }
+    .user-main .about .details{
+        margin-bottom: 0px
+    }
+    .user-main .about .secondary{
+        border-top: 0px;
+    }
+.mobile-nav .drop.expanded li{
+    margin: 0;
+}
+.mobile-nav .drop.expanded li a{
+    padding: 0.2em;
+}
+.mobile-nav .drop.expanded {
+    padding: 0;
+}
+.user-main .about .secondary dl div{
+margin: 0;
+}
+.user-stream .item, .user-stream .user-stream-item{
+    padding: 0.2em;
+}
+.select-kit.dropdown-select-box.notifications-filter .notifications-filter-header{
+    padding: 0.2em;
+}
+.suggested-topics{
+    padding: 0;
+}
+.suggested-topics .topics{
+    padding: 0;
+}
+.badge-card .badge-contents{
+    min-height: 0;
+}
+.badge-card .badge-contents .badge-info{
+    padding: 0;
+}
+.user-main{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.user-stream .excerpt{
+    margin: 0;
+}
+.form-vertical .control-group{
+ margin: 0;
+}
+.user-preferences{
+    padding: 0;
+}
+.user-preferences .instructions{
+    margin: 0;
+}
+.user-preferences .tracking-controls{
+    margin: 0;
+}
+.select-kit .select-kit-row{
+    padding: 0.4em;
+}
+.menu-panel li.category-link .badge-notification{
+    display: none;
+}
+}
+if CategorySubCat{
+    div.category-list.with-topics > div > table > tbody > tr.subcategories-list{
+        display: none;
+        }
+    }
+if RemoveTopicsCat{
+    div.category-list.with-topics > div > footer{
+        display:none;
+        }
+    td.num.posts{
+        display: none;
+    }
+    
+    }
+}
+
+@-moz-document url("https://devforum.roblox.com/about"){
+if RemoveSapces{
+    div > div:nth-child(4) > div > table > tbody > tr:nth-child(1) > td{
+        padding: 6px 6px 6px 0px;
+    }
+    div > div:nth-child(4) > div > table > tbody > tr:nth-child(2) > td{
+        padding: 6px 6px 6px 0px;
+    }
+    div > div:nth-child(4) > div > table > tbody > tr:nth-child(3) > td{
+        padding: 6px 6px 6px 0px;
+    }
+    div > div:nth-child(4) > div > table > tbody > tr:nth-child(4) > td{
+        padding: 6px 6px 6px 0px;
+    }
+    div > div:nth-child(4) > div > table > tbody > tr:nth-child(5) > td{
+        padding: 6px 6px 6px 0px;
+    }
+    div > div:nth-child(4) > div > table > thead > tr > th{
+        padding: 0px;
+    }
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(2) > span{
+        font-size: 0px;
+    }
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(2) > span::before{
+        content:"24H";
+        font-size: FontSize+2px;
+        font-weight: 500;
+    }
+    
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(3) > span{
+        font-size: 0px;
+    }
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(3) > span::before{
+        content:"7D";
+        font-size: FontSize+2px;
+        font-weight: 500;
+    }
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(4) > span{
+        font-size: 0px;
+    }
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(4) > span::before{
+        content:"30D";
+        font-size: FontSize+2px;
+        font-weight: 500;
+    }
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(5) > span{
+        font-size: 0px;
+    }
+    #about_rbx > div > div:nth-child(4) > div > table > thead > tr > th:nth-child(5) > span::before{
+        content:"All Time";
+        font-size: FontSize+2px;
+        font-weight: 500;
+    }
+}
+    #about_rbx > div > div:nth-child(2) > div{
+    display: flex;
+    flex-direction: column;
+    column-count: 2;
+    flex-wrap: nowrap;
+    justify-content: center;
+    }
+    #about_rbx > div > div:nth-child(3) > div{
+    display: flex;
+    flex-direction: column;
+    column-count: 2;
+    flex-wrap: nowrap;
+    justify-content: center;
+    }
+    span.MuiTypography-root.jss4.jss12.jss38.jss56.MuiTypography-alignLeft{
+    -webkit-box-orient: unset;
+    text-overflow: unset;
+    font-weight: 500 !important;
+    }
+    .jss56{
+        overflow: revert;
+    }
+    .jss53{
+        width: 100%
+    }
+    .MuiGrid-grid-xs-4 {
+        flex-grow: 0;
+        max-width: 100%;
+        flex-basis: 33.333333%;
+    }  
+}
